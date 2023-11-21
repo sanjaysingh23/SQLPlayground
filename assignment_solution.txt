@@ -1,0 +1,165 @@
+1. Display the name of all employees whose salary is between 500 and 1300
+2. Display the name of all employees who are in HR dept
+3. Display the name of all the dept and count of all the employees in that dept.
+4. Display the name , deptname and  salary of the employee whose salary is highest.
+5. Display the name , deptname and  salary of the employee whose salary is lowest.
+6. Display the name , deptname of employee whose salary is second highest.
+7. display the name, deptname of top five earning employees.
+8. Display the deptname, name of top 5 earning employees from each dept.
+9. Display the avg salary of each dept.
+10.Display the min and max salary of each dept.
+
+
+ques1
+
+select ename from emp where salary between 500 and 1300
++-------+--------+
+| ename | salary |
++-------+--------+
+| a     |   1000 |
+| b     |   1023 |
+| h     |    523 |
+| j     |    627 |
+| k     |    978 |
+| m     |    746 |
+| p     |    821 |
+| r     |    546 |
+| s     |    717 |
+| t     |    817 |
+| u     |    888 |
+| a3    |    653 |
+| a8    |    845 |
+| b1    |   1212 |
+| b2    |   1242 |
+| b5    |    555 |
++-------+--------+
+
+
+ques2
+
+select ename from emp natural join dept where deptname='HR';
++-------+----------+
+| ename | deptname |
++-------+----------+
+| a     | HR       |
+| e     | HR       |
+| g     | HR       |
+| i     | HR       |
+| j     | HR       |
+| l     | HR       |
+| m     | HR       |
+| n     | HR       |
+| q     | HR       |
+| v     | HR       |
+| x     | HR       |
+| z     | HR       |
+| a1    | HR       |
+| a2    | HR       |
+| a4    | HR       |
+| a6    | HR       |
+| a8    | HR       |
+| b1    | HR       |
+| b5    | HR       |
+| b7    | HR       |
+| b9    | HR       |
++-------+----------+
+
+ques3
+
+select deptname,count(deptname) from emp natural join dept group by deptname;
++----------+-----------------+
+| deptname | count(deptname) |
++----------+-----------------+
+| HR       |              21 |
+| IT       |              10 |
+| Finance  |              14 |
++----------+-----------------+
+
+ques4
+
+select ename,deptname,salary from emp natural join dept order by salary desc limit 1;
++-------+----------+--------+
+| ename | deptname | salary |
++-------+----------+--------+
+| x     | HR       |  28222 |
++-------+----------+--------+
+
+ques5
+
+select ename, deptname,salary from emp join dept on emp.deptid=dept.deptid order by salary limit 1;
++-------+----------+--------+
+| ename | deptname | salary |
++-------+----------+--------+
+| a5    | IT       |      3 |
++-------+----------+--------+
+
+ques 6
+
+ select ename,deptname,salary from emp join dept on emp.deptid=dept.deptid order by salary desc limit 1 offset 1;
++-------+----------+--------+
+| ename | deptname | salary |
++-------+----------+--------+
+| w     | Finance  |  20001 |
++-------+----------+--------+
+
+ques 7
+
+ select ename,deptname,salary from emp join dept on emp.deptid=dept.deptid order by salary desc limit 5;
++-------+----------+--------+
+| ename | deptname | salary |
++-------+----------+--------+
+| x     | HR       |  28222 |
+| w     | Finance  |  20001 |
+| y     | Finance  |  19212 |
+| z     | HR       |  12111 |
+| a2    | HR       |   9238 |
++-------+----------+--------+
+
+
+ques 8
+
+select d.deptname,e.ename,e.salary from emp e join dept d on e.deptid=d.deptid where (select count(*) from emp e1 where e1.deptid=e.deptid and e1.salary >= e.salary) <= 5 order by deptname,salary desc;
++----------+-------+--------+
+| deptname | ename | salary |
++----------+-------+--------+
+| Finance  | w     |  20001 |
+| Finance  | y     |  19212 |
+| Finance  | b4    |   4444 |
+| Finance  | f     |   2023 |
+| Finance  | o     |   1999 |
+| HR       | x     |  28222 |
+| HR       | z     |  12111 |
+| HR       | a2    |   9238 |
+| HR       | v     |   9029 |
+| HR       | b7    |   6432 |
+| IT       | b8    |   4532 |
+| IT       | b3    |   4212 |
+| IT       | c1    |   2324 |
+| IT       | b2    |   1242 |
+| IT       | b     |   1023 |
++----------+-------+--------+
+
+
+ques 9
+
+ select deptname,avg(salary) from emp join dept on emp.deptid=dept.deptid group by deptname;
++----------+-------------+
+| deptname | avg(salary) |
++----------+-------------+
+| HR       |   3855.8571 |
+| IT       |   1540.7000 |
+| Finance  |   3814.2143 |
++----------+-------------+
+
+ques 10
+
+
+ select deptname,max(salary) as max_sal,min(salary) as min_sal from emp join dept on emp.deptid=dept.deptid group by deptname;
++----------+---------+---------+
+| deptname | max_sal | min_sal |
++----------+---------+---------+
+| HR       |   28222 |      16 |
+| IT       |    4532 |       3 |
+| Finance  |   20001 |      23 |
++----------+---------+---------+
+
