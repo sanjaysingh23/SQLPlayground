@@ -1,0 +1,213 @@
+
+Q1-   select first_name as worker_name from worker;
++-------------+
+| worker_name |
++-------------+
+| Monika      |
+| Niharika    |
+| Vishal      |
+| Amitabh     |
+| Vivek       |
+| Vipul       |
+| Satish      |
+| Geetika     |
++-------------+
+
+Q2-   select upper(first_name) from worker;
++-------------------+
+| upper(first_name) |
++-------------------+
+| MONIKA            |
+| NIHARIKA          |
+| VISHAL            |
+| AMITABH           |
+| VIVEK             |
+| VIPUL             |
+| SATISH            |
+| GEETIKA           |
++-------------------+
+
+Q3-   select distinct department from worker;
++------------+
+| department |
++------------+
+| HR         |
+| Admin      |
+| Account    |
++------------+
+
+Q4-   select concat(first_name,' ',last_name)as complete_name from worker;
++-----------------+
+| complete_name   |
++-----------------+
+| Monika Arora    |
+| Niharika Verma  |
+| Vishal Singhal  |
+| Amitabh Singh   |
+| Vivek Bhati     |
+| Vipul Diwan     |
+| Satish Kumar    |
+| Geetika Chauhan |
++-----------------+
+
+Q5-   select*from worker order by first_name asc;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 00:00:00 | Admin      |
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 00:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 00:00:00 | Account    |
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 00:00:00 | Account    |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q6-   SELECT * FROM Worker ORDER BY FIRST_NAME ASC, DEPARTMENT DESC;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 00:00:00 | Admin      |
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 00:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 00:00:00 | Account    |
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 00:00:00 | Account    |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+
+Q7-   select *from worker where first_name in('vipul','satish');
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 00:00:00 | Account    |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 00:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q8-   select *from worker where first_name not in('vipul','satish');
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 00:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+
+Q9-   select *from worker where department in('admin');
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 00:00:00 | Admin      |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q10-   select *from worker where first_name like 'a%';
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q11-   select *from worker where first_name like '%a';
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 00:00:00 | Admin      |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q12-   select *from worker where first_name like '_____h%';
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 00:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q13-   select*from worker where salary between 100000 and 500000;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 00:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+
+
+Q14-   SELECT * FROM Worker WHERE JOINING_DATE LIKE '2014-02%';
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 00:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+
+Q15-   SELECT count(*) from worker where department='admin';
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+
+
+Q16-   SELECT FIRST_NAME,salary FROM Worker WHERE SALARY BETWEEN 50000 AND 100000;
++------------+--------+
+| FIRST_NAME | salary |
++------------+--------+
+| Monika     | 100000 |
+| Niharika   |  80000 |
+| Satish     |  75000 |
+| Geetika    |  90000 |
++------------+--------+
+
+Q17-   SELECT DEPARTMENT, COUNT(*) AS Worker_Count FROM Worker GROUP BY DEPARTMENT ORDER BY Worker_Count DESC;
++------------+--------------+
+| DEPARTMENT | Worker_Count |
++------------+--------------+
+| Admin      |            4 |
+| HR         |            2 |
+| Account    |            2 |
++------------+--------------+
+
+Q18-   select *from  worker inner join title on worker.worker_id=title.worker_ref_id where title.worker_title='manager';
++-----------+------------+-----------+--------+---------------------+------------+---------------+--------------+---------------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | WORKER_REF_ID | WORKER_TITLE | AFFECTED_FROM       |
++-----------+------------+-----------+--------+---------------------+------------+---------------+--------------+---------------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |             1 | Manager      | 2016-02-20 00:00:00 |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |             5 | Manager      | 2016-06-11 00:00:00 |
++-----------+------------+-----------+--------+---------------------+------------+---------------+--------------+---------------------+
+
+
+Q19-   select*from worker where worker_id %2<>0;
++-----------+------------+-----------+--------+---------------------+------------+
+| WORKER_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 00:00:00 | HR         |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 00:00:00 | HR         |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 00:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 00:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+
+
+WITH OddRows AS (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+    FROM worker
+)
+
+SELECT *
+FROM OddRows
+WHERE RowNum % 2 <> 0;
+
+
